@@ -6,11 +6,11 @@ using namespace std;
 
 int main()
 {
-    ifstream input ("input.txt");
+    ifstream input ("testInput.txt");
     string myInput;
     string outline;
-    int max{};
-    int total{};
+    int max{0};
+    int total{0};
     if (input.is_open())
     {
         while (input.good())
@@ -21,6 +21,7 @@ int main()
             total = 0;
         } else {
             total += std::stoi(outline);
+            
         }
     }
     max = std::max(max, total);
