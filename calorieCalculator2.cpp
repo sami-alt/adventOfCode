@@ -5,9 +5,9 @@
 #include <string>
 
 int main(){
-    std::fstream input("testInput.txt");
+    std::fstream input("input.txt");
     std::string outline;
-    std::vector <int> totals(0,1);
+    std::vector <int> totals = {0};
 
     while(std::getline(input, outline)){
         if(outline.size() == 0){
@@ -17,10 +17,16 @@ int main(){
         }
 
     }
+    
+    std::sort(totals.begin(), totals.end(), std::greater<int>());
+
+    int endResult = totals[0]+totals[1]+totals[2]; 
+    std::cout << endResult << '\n';
+    /*
     for(auto i: totals){
-        std::cout << i << "/n";
+        std::cout << i << '\n';
     }
-   
+   */
     
     return 0;
 }
