@@ -22,11 +22,6 @@ int main(){
 
     int endResult = totals[0]+totals[1]+totals[2]; 
     std::cout << endResult << '\n';
-    /*
-    for(auto i: totals){
-        std::cout << i << '\n';
-    }
-   */
     
     return 0;
 }

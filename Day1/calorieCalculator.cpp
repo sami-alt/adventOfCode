@@ -6,8 +6,7 @@ using namespace std;
 
 int main()
 {
-    ifstream input("input.txt");
-    string myInput;
+    fstream input("input.txt");
     string outline;
     int max{0};
     int total{0};
