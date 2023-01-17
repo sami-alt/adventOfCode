@@ -45,6 +45,10 @@ int main()
     {
         while (std::getline(input, outline))
         {
+            if(outline.size() < 3){
+                std::cout << "missing input" << "\n";
+                continue;
+                }
             char myTool = outline[2];
             char compTool = outline[0];
             score += pointsForTool(myTool) + checkWTL(compTool, myTool);
