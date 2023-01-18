@@ -16,30 +16,27 @@ std::unordered_map<char, int> pointsPerResult = {
 };
 
 
-/*
-    A:rock,1
-    B:paper,2
-    C:scissors,3
-*/
 
-/*
-    X:Lose,
-    Y:Tie,
-    Z:Win
-
-*/
 
 char toolToPlay(char opponentTool, int direction)
 {
     std::string toolOrder = "CABCA";
     int opponentPos = toolOrder.find(opponentTool, 1);
+    if(opponentPos == std::string::npos){
+        std::cout << "invalid input" << "\n";
+        return ' ';
+    }
     int wantedPos = opponentPos + direction;
     return toolOrder[wantedPos];
 }
 
 int chooseDirection(char expectedOutcome){
-    int direction = toolToUse.at(expectedOutcome);
-    return direction;
+    std::unordered_map<char , char>::iterator iterator = toolToUse.find(expectedOutcome);
+    if( iterator == toolToUse.end()){
+        std::cout << " invalid input" << "\n";
+        return 3;
+    }
+    return iterator -> second ;
 }
 
 
@@ -58,12 +55,18 @@ int main()
             if(outline.size()<3){
             std::cout << "missing input" << "\n";
             continue;
-        }
+            }
             char result = outline[2];
             char compTool = outline[0];
-
-            char myTool = toolToPlay(compTool, chooseDirection(result));
-
+            int dirVal = chooseDirection(result);
+            if(dirVal == 3){
+                continue;
+            }
+            char myTool = toolToPlay(compTool, dirVal);
+            if(myTool == ' '){
+                continue;
+            }
+            
             score += pointsForTool.at(myTool) + pointsPerResult.at(result);
         }
     }
